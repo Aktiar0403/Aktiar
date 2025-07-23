@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NephroCare Pro</title>
+  <style>
+    form {
+  display: flex;
+  flex-direction: column;
+}
+
+form label {
+  margin-top: 0.5rem;
+  font-weight: bold;
+}
+@media print {
+  body * {
+    visibility: hidden;
+  }
+
+  #printable-prescription, #printable-prescription * {
+    visibility: visible;
+  }
+
+  #printable-prescription {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-color: white;
+    padding: 2rem;
+    font-family: Arial, sans-serif;
+  }
+
+  #printable-prescription h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  #printable-prescription ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+
+  #printable-prescription li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+form input,
+form select,
+form textarea {
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.input-ok {
+  border: 2px solid #4caf50;
+  background-color: #e8f5e9;
+}
+
+.input-warn {
+  border: 2px solid #f44336;
+  background-color: #ffebee;
+}
+
+.ref-range {
+  display: block;
+  font-size: 0.85rem;
+  color: #555;
+  margin-top: 0.25rem;
+}
+
+form small {
+  font-size: 0.85rem;
+  color: gray;
+  margin-bottom: 0.5rem;
+}
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 2rem;
+      background-color: #f5f5f5;
+    }
+
+    h1 {
+      text-align: center;
+      color: #00796b;
+    }
+
+    .accordion-button {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 1rem;
+      background-color: #00796b;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      margin-top: 0.5rem;
+      transition: background-color 0.2s ease;
+    }
+
+    .accordion-button:hover {
+      background-color: #004d40;
+    }
+
+    .accordion-content {
+      display: none;
+      padding: 1rem;
+      background-color: #e0f2f1;
+      border-radius: 5px;
+      margin-bottom: 0.5rem;
+    }
+
+    .accordion-content.show {
+      display: block;
+    }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body>
+  <h1>NephroCare Pro</h1>
+
+  <!-- Patient Profile Accordion -->
+  <!-- Patient Profile Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Patient Profile
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="patient-profile-form">
+    <label for="patient-name">Name:</label>
+    <input type="text" id="patient-name" name="patient-name" placeholder="Enter name" required>
+
+    <label for="patient-age">Age:</label>
+    <input type="number" id="patient-age" name="patient-age" placeholder="Enter age" required>
+
+    <label for="patient-gender">Gender:</label>
+    <select id="patient-gender" name="patient-gender" required>
+      <option value="">Select gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label for="patient-location">Location:</label>
+    <input type="text" id="patient-location" name="patient-location" placeholder="Enter location">
+  </form>
+  </div>
+</div>
+
+  <!-- Medical History Accordion -->
+  <!-- Medical History Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Medical History
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="medical-history-form">
+    <label><input type="checkbox" id="diabetes" name="diabetes"> Diabetes</label>
+    <input type="number" id="diabetes-duration" name="diabetes-duration" placeholder="Duration (years)">
+
+    <label><input type="checkbox" id="hypertension" name="hypertension"> Hypertension</label>
+    <input type="number" id="hypertension-duration" name="hypertension-duration" placeholder="Duration (years)">
+
+    <label><input type="checkbox" id="nsaid-use" name="nsaid-use"> NSAID Use</label>
+    <label><input type="checkbox" id="past-stone-disease" name="past-stone-disease"> Past Stone Disease</label>
+    <label><input type="checkbox" id="family-ckd" name="family-ckd"> Family History of CKD</label>
+    <label><input type="checkbox" id="tb" name="tb"> TB</label>
+    <label><input type="checkbox" id="hiv" name="hiv"> HIV</label>
+    <label><input type="checkbox" id="hepatitis" name="hepatitis"> Hepatitis</label>
+  </form>
+  </div>
+</div>
+
+<!-- Symptoms Accordion -->
+<!-- Symptoms Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Symptoms
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="symptoms-form">
+    <label><input type="checkbox" id="edema" name="edema"> Edema (Swelling)</label>
+    <label><input type="checkbox" id="fatigue" name="fatigue"> Fatigue</label>
+    <label><input type="checkbox" id="nausea" name="nausea"> Nausea</label>
+    <label><input type="checkbox" id="vomiting" name="vomiting"> Vomiting</label>
+    <label><input type="checkbox" id="breathlessness" name="breathlessness"> Breathlessness</label>
+    <label><input type="checkbox" id="decreased-urine-output" name="decreased-urine-output"> Decreased Urine Output</label>
+    <label><input type="checkbox" id="flank-pain" name="flank-pain"> Flank Pain</label>
+    <label><input type="checkbox" id="hematuria" name="hematuria"> Hematuria (Blood in urine)</label>
+  </form>
+  </div>
+</div>
+<!-- Vital Signs Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Vital Signs
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="vital-signs-form">
+    <label for="sbp">Systolic BP (mmHg):</label>
+    <input type="number" id="sbp" name="sbp" placeholder="Enter SBP">
+
+    <label for="dbp">Diastolic BP (mmHg):</label>
+    <input type="number" id="dbp" name="dbp" placeholder="Enter DBP">
+
+    <label for="weight">Weight (kg):</label>
+    <input type="number" id="weight" name="weight" placeholder="Enter weight">
+
+    <label for="volume-status">Volume Status:</label>
+    <select id="volume-status" name="volume-status">
+      <option value="">Select status</option>
+      <option value="Normal">Normal</option>
+      <option value="Hypervolemic">Hypervolemic (Fluid overload)</option>
+      <option value="Hypovolemic">Hypovolemic (Dehydrated)</option>
+    </select>
+  </form>
+  </div>
+</div>
+<!-- Blood Tests Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Blood Tests
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="blood-tests-form">
+    <label for="creatinine">Creatinine (mg/dL):</label>
+    <input type="number" step="0.01" id="creatinine" name="creatinine">
+
+    <label for="egfr">eGFR (mL/min):</label>
+    <input type="number" id="egfr" name="egfr">
+
+    <label for="urea">Urea (mg/dL):</label>
+    <input type="number" id="urea" name="urea">
+
+    <label for="potassium">Potassium (mEq/L):</label>
+    <input type="number" step="0.01" id="potassium" name="potassium">
+
+    <label for="sodium">Sodium (mEq/L):</label>
+    <input type="number" id="sodium" name="sodium">
+
+    <label for="calcium">Calcium (mg/dL):</label>
+    <input type="number" step="0.01" id="calcium" name="calcium">
+
+    <label for="phosphate">Phosphate (mg/dL):</label>
+    <input type="number" step="0.01" id="phosphate" name="phosphate">
+
+    <label for="bicarbonate">Bicarbonate (mEq/L):</label>
+    <input type="number" step="0.1" id="bicarbonate" name="bicarbonate">
+
+    <label for="hemoglobin">Hemoglobin (g/dL):</label>
+    <input type="number" step="0.1" id="hemoglobin" name="hemoglobin">
+
+    <label for="albumin">Albumin (g/dL):</label>
+    <input type="number" step="0.1" id="albumin" name="albumin">
+
+    <label for="pth">PTH (pg/mL):</label>
+    <input type="number" id="pth" name="pth">
+  </form>
+  </div>
+</div>
+<!-- Urine Tests Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Urine Tests
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="urine-tests-form">
+    <label for="urinalysis-protein">Urinalysis Protein:</label>
+    <input type="text" id="urinalysis-protein" name="urinalysis-protein">
+
+    <label for="urinalysis-blood">Urinalysis Blood:</label>
+    <input type="text" id="urinalysis-blood" name="urinalysis-blood">
+
+    <label for="spot-protein-creatinine">Spot Protein/Creatinine Ratio (mg/g):</label>
+    <input type="number" id="spot-protein-creatinine" name="spot-protein-creatinine">
+
+    <label for="acr">Albumin/Creatinine Ratio (mg/g):</label>
+    <input type="number" id="acr" name="acr">
+
+    <label for="urine-protein-24h">24-hour Protein (g/day):</label>
+    <input type="number" step="0.01" id="urine-protein-24h" name="urine-protein-24h">
+  </form>
+  </div>
+</div>
+<!-- Ultrasound Report Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Ultrasound Report
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="ultrasound-report-form">
+    <label for="kidney-size">Kidney Size:</label>
+    <select id="kidney-size" name="kidney-size">
+      <option value="">Select</option>
+      <option value="Normal">Normal</option>
+      <option value="Increased">Increased</option>
+      <option value="Decreased">Decreased</option>
+      <option value="Asymmetrical">Asymmetrical</option>
+    </select>
+
+    <label for="echogenicity">Cortical Echogenicity:</label>
+    <select id="echogenicity" name="echogenicity">
+      <option value="">Select</option>
+      <option value="Normal">Normal</option>
+      <option value="Mildly increased">Mildly increased</option>
+      <option value="Markedly increased">Markedly increased</option>
+    </select>
+
+    <label for="parenchymal-thickness">Parenchymal Thickness:</label>
+    <select id="parenchymal-thickness" name="parenchymal-thickness">
+      <option value="">Select</option>
+      <option value="Normal">Normal</option>
+      <option value="Reduced">Reduced</option>
+    </select>
+
+    <label for="hydronephrosis">Hydronephrosis:</label>
+    <select id="hydronephrosis" name="hydronephrosis">
+      <option value="">Select</option>
+      <option value="None">None</option>
+      <option value="Mild">Mild</option>
+      <option value="Moderate">Moderate</option>
+      <option value="Severe">Severe</option>
+    </select>
+
+    <label for="stones">Stones:</label>
+    <select id="stones" name="stones">
+      <option value="">Select</option>
+      <option value="None">None</option>
+      <option value="Single">Single</option>
+      <option value="Multiple">Multiple</option>
+      <option value="Bilateral">Bilateral</option>
+    </select>
+
+    <label for="cysts">Cysts:</label>
+    <select id="cysts" name="cysts">
+      <option value="">Select</option>
+      <option value="None">None</option>
+      <option value="Single">Single</option>
+      <option value="Multiple unilateral">Multiple unilateral</option>
+      <option value="Multiple bilateral">Multiple bilateral</option>
+    </select>
+
+    <fieldset>
+      <legend>Other Findings:</legend>
+      <label><input type="checkbox" name="other-findings" value="Cortical scarring"> Cortical scarring</label>
+      <label><input type="checkbox" name="other-findings" value="Poor corticomedullary differentiation"> Poor corticomedullary differentiation</label>
+      <label><input type="checkbox" name="other-findings" value="Perinephric collection"> Perinephric collection</label>
+    </fieldset>
+  </form>
+  </div>
+</div>
+
+<!-- Diagnose Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Diagnose
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <div id="ai-diagnosis-section">
+    <button id="generate-diagnosis">Generate Diagnosis</button>
+
+    <h3>Doctor-Level Interpretation</h3>
+    <textarea id="doctor-diagnosis" readonly placeholder="Diagnosis will appear here"></textarea>
+
+    <h3>Patient-Friendly Explanation</h3>
+    <textarea id="patient-diagnosis" readonly placeholder="Patient explanation will appear here"></textarea>
+  </div>
+</div>
+  <button type="button" id="save-visit">💾 Save This Visit</button>
+</div>
+<!-- Prescription Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Prescription
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <form id="prescription-form">
+    <label for="med-name">Medicine Name:</label>
+    <input type="text" id="med-name" name="med-name" placeholder="e.g. Ramipril">
+
+    <label for="dose">Dose:</label>
+    <input type="text" id="dose" name="dose" placeholder="e.g. 5mg daily">
+
+    <label for="notes">Doctor Notes:</label>
+    <textarea id="notes" name="notes" placeholder="Instructions for doctor"></textarea>
+
+    <label for="patient-instructions">Patient Instructions:</label>
+    <textarea id="patient-instructions" name="patient-instructions" placeholder="Simple words for patient"></textarea>
+  </form>
+  <button type="button" id="print-prescription">🖨️ Print Prescription</button>
+  </div>
+</div>
+<!-- Saved Records Accordion -->
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Saved Records
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <div id="saved-records-section">
+    <p>No saved records yet.</p>
+    <ul id="saved-records-list"></ul>
+    <div id="visit-details">
+  </div>
+</div>
+    <button id="export-button" style="display:none;">📋 Export This Visit as Text</button>
+    <textarea id="export-text" readonly style="display:none; width:100%; height:200px; margin-top:1rem;"></textarea>
+  </div>
+</div>
+
+<div x-data="{ open: false }" class="border rounded-lg overflow-hidden mb-4">
+  <button @click="open = !open" class="w-full bg-green-700 text-white p-3 text-left text-lg font-semibold">
+    Settings
+  </button>
+  <div x-show="open" x-transition class="p-4 bg-white border-t">
+    <div id="settings-section">
+    <h3>Editable Diagnosis Rules</h3>
+    <p>Below are the rules the app uses to suggest diagnoses. You can edit them, but you must enter a reason for any change (for audit trail).</p>
+    
+    <form id="rules-form">
+      <label for="test-name">Test Name:</label>
+      <input type="text" id="test-name" name="test-name" placeholder="e.g. eGFR">
+
+      <label for="operator">Operator:</label>
+      <select id="operator" name="operator">
+        <option value="">Select</option>
+        <option value="<">&lt;</option>
+        <option value=">">&gt;</option>
+        <option value="=">=</option>
+      </select>
+
+      <label for="threshold">Threshold:</label>
+      <input type="number" id="threshold" name="threshold" placeholder="e.g. 60">
+
+      <label for="suggestion">Suggestion Text:</label>
+      <input type="text" id="suggestion" name="suggestion" placeholder="e.g. CKD Stage 3+">
+
+      <label for="reason">Reason for Change:</label>
+      <textarea id="reason" name="reason" placeholder="e.g. Local guidelines differ" required></textarea>
+
+      <button type="button" id="save-rule">Save Rule</button>
+    </form>
+
+    <h4>Existing Rules</h4>
+    <ul id="rules-list">
+      <li>eGFR < 60 → CKD Stage 3+ (Default rule)</li>
+      <li>ACR > 300 → Nephrotic range proteinuria (Default rule)</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+
+
+<div id="printable-prescription" style="display:none;"></div>
+
+<script type="module" src="./js/ui.js"></script>
+<script type="module" src="./js/app.js"></script>
+
+
+
+
+
+
+</body>
+</html>
