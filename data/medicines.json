@@ -1,0 +1,45 @@
+[
+  {
+    "conditions": [
+      "egfr < 45",
+      "potassium < 5.5"
+    ],
+    "meds": [
+      {
+        "name": "Sodium Bicarbonate",
+        "dose": "500 mg twice daily",
+        "reason": "To correct acidosis"
+      },
+      {
+        "name": "Calcium Carbonate",
+        "dose": "500 mg with meals",
+        "reason": "To manage phosphate"
+      }
+    ]
+  },
+  {
+    "conditions": [
+      "potassium > 5.5"
+    ],
+    "meds": [
+      {
+        "name": "Stop RAAS blockers",
+        "dose": "N/A",
+        "reason": "High potassium risk"
+      }
+    ]
+  },
+  {
+    "conditions": [
+      "edema",
+      "bp_systolic > 140"
+    ],
+    "meds": [
+      {
+        "name": "Furosemide",
+        "dose": "20 mg once daily",
+        "reason": "To manage fluid overload and hypertension"
+      }
+    ]
+  }
+]
