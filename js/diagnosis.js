@@ -47,15 +47,19 @@ export function evaluateRule(rule, visit) {
       field: rule.test,
       operator: rule.operator,
       value: rule.threshold
-    }, visit);
+    }, visit) === true;
   }
 
   if (rule.type === "multi" || rule.type === "compound") {
-    return rule.conditions.every(cond => evaluateCondition(cond, visit));
+    const results = rule.conditions.map(cond => evaluateCondition(cond, visit));
+    const valid = results.filter(v => v !== null);
+    const positives = valid.filter(Boolean);
+    return valid.length > 0 && positives.length >= Math.ceil(valid.length * 0.6); // 60% match
   }
 
   return false;
 }
+
 
 export function generateDiagnosisText(visit) {
   const matches = [];
