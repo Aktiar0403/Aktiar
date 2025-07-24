@@ -1,0 +1,37 @@
+[
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 90,
+    "suggestion": "CKD Stage 2",
+    "reason": "Mild reduction in kidney function per KDIGO."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 60,
+    "suggestion": "CKD Stage 3",
+    "reason": "Moderate reduction in kidney function."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "operator": "<",
+        "test": "egfr",
+        "threshold": 30
+      },
+      {
+        "section": "blood",
+        "operator": "<",
+        "test": "hemoglobin",
+        "threshold": 10
+      }
+    ],
+    "suggestion": "CKD Stage 4 with Anemia",
+    "reason": "Severe kidney disease with low hemoglobin."
+  }
+]

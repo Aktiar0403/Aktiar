@@ -1,4 +1,1512 @@
-[
+ [
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "medical",
+        "field": "nsaid-use",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 1.5
+      }
+    ],
+    "suggestion": "NSAID-Related Acute Kidney Injury",
+    "reason": "Fatigue and recent NSAID use with elevated creatinine."
+  },
+  {
+    "type": "simple",
+    "test": "urea",
+    "operator": ">",
+    "threshold": 150,
+    "suggestion": "Extremely High Urea",
+    "reason": "Suggests severe renal dysfunction or high catabolism."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "flank-pain",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "fever",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Possible Pyelonephritis",
+    "reason": "Infective cause of kidney pain with systemic signs."
+  },
+  {
+    "type": "simple",
+    "test": "calcium",
+    "operator": "<",
+    "threshold": 8,
+    "suggestion": "Mild Hypocalcemia",
+    "reason": "May be nutritional or related to CKD-MBD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "spot-protein-creatinine",
+        "operator": ">",
+        "value": 3
+      },
+      {
+        "section": "blood",
+        "field": "albumin",
+        "operator": "<",
+        "value": 2.8
+      }
+    ],
+    "suggestion": "Nephrotic-Range Proteinuria (PCR)",
+    "reason": "Confirmed by spot protein/creatinine ratio."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "hydronephrosis",
+        "operator": "==",
+        "value": "Severe"
+      },
+      {
+        "section": "symptoms",
+        "field": "decreased-urine-output",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Severe Obstructive Uropathy",
+    "reason": "Needs urgent decompression (stent/nephrostomy)."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "diabetes",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 30
+      }
+    ],
+    "suggestion": "Early Diabetic Kidney Disease",
+    "reason": "Microalbuminuria in diabetes; intervene early."
+  },
+  {
+    "type": "simple",
+    "test": "bicarbonate",
+    "operator": "<",
+    "threshold": 12,
+    "suggestion": "Moderate Metabolic Acidosis",
+    "reason": "Suggests renal tubular dysfunction or uremia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "calcium",
+        "operator": ">",
+        "value": 11
+      }
+    ],
+    "suggestion": "Hypercalcemia with Systemic Symptoms",
+    "reason": "Rule out malignancy, sarcoidosis, or tertiary HPT."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "parenchymal-disease",
+        "operator": "==",
+        "value": "Present"
+      },
+      {
+        "section": "ultrasound",
+        "field": "kidney-size",
+        "operator": "==",
+        "value": "Small"
+      }
+    ],
+    "suggestion": "Chronic Parenchymal Nephropathy",
+    "reason": "Irreversible chronic damage on imaging."
+  }
+
+
+  {
+    "type": "simple",
+    "test": "hemoglobin",
+    "operator": ">",
+    "threshold": 18,
+    "suggestion": "Polycythemia",
+    "reason": "Can occur in cystic kidney disease or hypoxia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 1.5
+      },
+      {
+        "section": "medical",
+        "field": "hypertension",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Hypertensive Renal Disease",
+    "reason": "Elevated creatinine with hypertension."
+  },
+  {
+    "type": "simple",
+    "test": "creatinine",
+    "operator": "<",
+    "threshold": 0.4,
+    "suggestion": "Low Creatinine",
+    "reason": "May reflect low muscle mass or malnutrition."
+  },
+  {
+    "type": "simple",
+    "test": "sodium",
+    "operator": "<",
+    "threshold": 120,
+    "suggestion": "Critical Hyponatremia",
+    "reason": "May cause seizures, requires urgent correction."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": ">",
+        "value": 7
+      },
+      {
+        "section": "blood",
+        "field": "calcium",
+        "operator": "<",
+        "value": 8.5
+      }
+    ],
+    "suggestion": "Severe Mineral Imbalance",
+    "reason": "May indicate CKD-MBD or parathyroid dysfunction."
+  },
+  {
+    "type": "simple",
+    "test": "potassium",
+    "operator": ">",
+    "threshold": 6.5,
+    "suggestion": "Life-threatening Hyperkalemia",
+    "reason": "Needs emergency treatment to avoid cardiac arrest."
+  },
+  {
+    "type": "simple",
+    "test": "potassium",
+    "operator": "<",
+    "threshold": 2.5,
+    "suggestion": "Critical Hypokalemia",
+    "reason": "Risk of cardiac arrhythmias or paralysis."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "vomiting",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "urea",
+        "operator": ">",
+        "value": 80
+      }
+    ],
+    "suggestion": "Uremic Syndrome",
+    "reason": "Suggests toxin buildup due to renal failure."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "cysts",
+        "operator": "in",
+        "value": ["Unilateral"]
+      }
+    ],
+    "suggestion": "Simple Renal Cyst",
+    "reason": "Usually benign finding; monitor periodically."
+  },
+  {
+    "type": "simple",
+    "test": "hemoglobin",
+    "operator": "<",
+    "threshold": 6,
+    "suggestion": "Severe Anemia",
+    "reason": "Urgent correction required; risk of ischemia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 45
+      },
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": ">",
+        "value": 4.5
+      }
+    ],
+    "suggestion": "Moderate CKD with Phosphate Retention",
+    "reason": "May indicate need for phosphate binders."
+  },
+  {
+    "type": "simple",
+    "test": "albumin",
+    "operator": "<",
+    "threshold": 2,
+    "suggestion": "Severe Hypoalbuminemia",
+    "reason": "Risk of fluid overload and poor prognosis."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "edema",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "ultrasound",
+        "field": "ascites",
+        "operator": "==",
+        "value": "Present"
+      }
+    ],
+    "suggestion": "Edematous State with Ascites",
+    "reason": "Evaluate cardiac, liver, and renal causes."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "nausea",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "breathlessness",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Uremia with Fluid Overload",
+    "reason": "Consider dialysis initiation."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "urinalysis-blood",
+        "operator": "==",
+        "value": "Positive"
+      },
+      {
+        "section": "urine",
+        "field": "urinalysis-protein",
+        "operator": "==",
+        "value": "Positive"
+      }
+    ],
+    "suggestion": "Possible Glomerulonephritis",
+    "reason": "Hematuria and proteinuria on dipstick."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "diabetes",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "medical",
+        "field": "hypertension",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 60
+      }
+    ],
+    "suggestion": "CKD from Diabetes and Hypertension",
+    "reason": "Most common dual cause of CKD."
+  },
+  {
+    "type": "simple",
+    "test": "bicarbonate",
+    "operator": "<",
+    "threshold": 10,
+    "suggestion": "Severe Acidosis",
+    "reason": "Needs urgent correction or dialysis."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "decreased-urine-output",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "nausea",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 2.5
+      }
+    ],
+    "suggestion": "AKI with Systemic Symptoms",
+    "reason": "Urgent evaluation and fluid management required."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 20,
+    "suggestion": "CKD Stage 5 Approaching",
+    "reason": "Consider pre-ESRD education and planning."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "urea",
+        "operator": ">",
+        "value": 120
+      },
+      {
+        "section": "symptoms",
+        "field": "vomiting",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Uremic Emergency",
+    "reason": "Dialysis likely needed."
+  },
+  {
+    "type": "simple",
+    "test": "albumin",
+    "operator": ">",
+    "threshold": 6,
+    "suggestion": "Marked Hyperalbuminemia",
+    "reason": "Could suggest dehydration or measurement error."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "kidney-size",
+        "operator": "==",
+        "value": "Small"
+      },
+      {
+        "section": "ultrasound",
+        "field": "echogenicity",
+        "operator": "==",
+        "value": "Markedly increased"
+      }
+    ],
+    "suggestion": "Chronic Irreversible Kidney Damage",
+    "reason": "Likely ESRD, poor prognosis for recovery."
+  },
+  {
+    "type": "simple",
+    "test": "calcium",
+    "operator": "<",
+    "threshold": 7.5,
+    "suggestion": "Critical Hypocalcemia",
+    "reason": "Risk of tetany, seizures, or arrhythmia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "hydronephrosis",
+        "operator": "==",
+        "value": "Present"
+      },
+      {
+        "section": "urine",
+        "field": "urinalysis-blood",
+        "operator": "==",
+        "value": "Positive"
+      }
+    ],
+    "suggestion": "Obstructive Uropathy with Hematuria",
+    "reason": "May require urological intervention."
+  }
+
+
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "tb",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "weight-loss",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Suspected Renal Tuberculosis",
+    "reason": "TB with constitutional symptoms; consider urine TB PCR."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "hematuria",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "ultrasound",
+        "field": "mass-lesion",
+        "operator": "==",
+        "value": "Present"
+      }
+    ],
+    "suggestion": "Suspicious for Renal Tumor",
+    "reason": "Hematuria with mass lesion; consider imaging/biopsy."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "hepatitis",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 300
+      }
+    ],
+    "suggestion": "Hepatitis-associated Glomerulonephritis",
+    "reason": "Consider secondary GN in hepatitis-infected patient."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "albumin",
+        "operator": "<",
+        "value": 3
+      },
+      {
+        "section": "ultrasound",
+        "field": "ascites",
+        "operator": "==",
+        "value": "Present"
+      }
+    ],
+    "suggestion": "Hypoalbuminemia with Ascites",
+    "reason": "Could be nephrotic, hepatic or cardiac origin."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 2
+      },
+      {
+        "section": "medical",
+        "field": "hiv",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "HIV-associated Nephropathy (HIVAN)",
+    "reason": "Consider biopsy in HIV with worsening renal function."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "echogenicity",
+        "operator": "==",
+        "value": "Mildly increased"
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 90
+      }
+    ],
+    "suggestion": "Early CKD with Mild Imaging Changes",
+    "reason": "Monitor for progression; modify risk factors."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": ">",
+    "threshold": 90,
+    "suggestion": "Normal Kidney Function",
+    "reason": "No abnormality detected with current data."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "hemoglobin",
+        "operator": "<",
+        "value": 11
+      }
+    ],
+    "suggestion": "Fatigue due to Anemia",
+    "reason": "Common in CKD or chronic illness."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": "<",
+        "value": 2.5
+      },
+      {
+        "section": "blood",
+        "field": "vitamin-d",
+        "operator": "<",
+        "value": 20
+      }
+    ],
+    "suggestion": "Possible Vitamin D Deficiency",
+    "reason": "Low phosphate and low vitamin D suggest deficiency."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "urinalysis-protein",
+        "operator": "==",
+        "value": "3+"
+      },
+      {
+        "section": "symptoms",
+        "field": "edema",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Nephrotic Range Proteinuria (Urine Dipstick)",
+    "reason": "Strong proteinuria signal; confirm with 24h test."
+  }
+
+
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "hemoglobin",
+        "operator": "<",
+        "value": 7
+      },
+      {
+        "section": "symptoms",
+        "field": "breathlessness",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Life-threatening Anemia",
+    "reason": "Urgent correction needed; consider transfusion."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "vomiting",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 16
+      }
+    ],
+    "suggestion": "Metabolic Acidosis with GI symptoms",
+    "reason": "Suggests progression of renal failure."
+  },
+  {
+    "type": "simple",
+    "test": "bicarbonate",
+    "operator": ">",
+    "threshold": 30,
+    "suggestion": "Metabolic Alkalosis",
+    "reason": "Consider diuretic use or volume depletion."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "urine-protein-24h",
+        "operator": ">",
+        "value": 3.5
+      },
+      {
+        "section": "blood",
+        "field": "albumin",
+        "operator": "<",
+        "value": 2.5
+      },
+      {
+        "section": "symptoms",
+        "field": "edema",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Classic Nephrotic Syndrome",
+    "reason": "Proteinuria, hypoalbuminemia and edema."
+  },
+  {
+    "type": "simple",
+    "test": "creatinine",
+    "operator": ">",
+    "threshold": 3.5,
+    "suggestion": "Severe Renal Dysfunction",
+    "reason": "Likely progression toward ESRD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "decreased-urine-output",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "urea",
+        "operator": ">",
+        "value": 60
+      }
+    ],
+    "suggestion": "Possible Pre-Renal AKI",
+    "reason": "Volume depletion or dehydration may be cause."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "==",
+    "threshold": 0,
+    "suggestion": "Data Error in eGFR",
+    "reason": "Please recheck input values for lab data."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "parenchymal-disease",
+        "operator": "==",
+        "value": "Present"
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 60
+      }
+    ],
+    "suggestion": "CKD with Structural Changes",
+    "reason": "Imaging correlates with reduced renal function."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "calcium",
+        "operator": ">",
+        "value": 10.5
+      },
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": "<",
+        "value": 2.5
+      }
+    ],
+    "suggestion": "Possible Tertiary Hyperparathyroidism",
+    "reason": "High calcium and low phosphate suggests PTH excess."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 45,
+    "suggestion": "CKD Stage 3B or worse",
+    "reason": "Consider nephrology referral if not already done."
+  },
+  {
+    "type": "simple",
+    "test": "potassium",
+    "operator": "<",
+    "threshold": 3.5,
+    "suggestion": "Hypokalemia",
+    "reason": "May cause weakness, cramps, or arrhythmia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": ">",
+        "value": 6
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 15
+      }
+    ],
+    "suggestion": "ESRD with Hyperphosphatemia",
+    "reason": "End-stage renal disease with phosphate retention."
+  },
+  {
+    "type": "simple",
+    "test": "calcium",
+    "operator": ">",
+    "threshold": 11,
+    "suggestion": "Severe Hypercalcemia",
+    "reason": "Needs urgent management; risk of cardiac arrhythmia."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "vitals",
+        "field": "sbp",
+        "operator": ">",
+        "value": 140
+      },
+      {
+        "section": "vitals",
+        "field": "dbp",
+        "operator": ">",
+        "value": 90
+      },
+      {
+        "section": "medical",
+        "field": "diabetes",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Suboptimal BP Control in Diabetic CKD",
+    "reason": "May require ACEi/ARB or dose adjustment."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "family-ckd",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "ultrasound",
+        "field": "kidney-size",
+        "operator": "==",
+        "value": "Normal"
+      },
+      {
+        "section": "ultrasound",
+        "field": "cysts",
+        "operator": "in",
+        "value": ["Multiple bilateral"]
+      }
+    ],
+    "suggestion": "Inherited Renal Cystic Disease",
+    "reason": "Suggests ADPKD, consider genetic testing."
+  },
+  {
+    "type": "simple",
+    "test": "sodium",
+    "operator": ">",
+    "threshold": 150,
+    "suggestion": "Severe Hypernatremia",
+    "reason": "High risk of neurological symptoms and dehydration."
+  },
+  {
+    "type": "simple",
+    "test": "urea",
+    "operator": "<",
+    "threshold": 10,
+    "suggestion": "Low Urea",
+    "reason": "May reflect low protein intake or liver disease."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "nausea",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "urea",
+        "operator": ">",
+        "value": 100
+      }
+    ],
+    "suggestion": "Uremic Symptoms with High BUN",
+    "reason": "Suggest dialysis initiation if symptomatic."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 60
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 30
+      }
+    ],
+    "suggestion": "Chronic Kidney Disease (KDIGO Definition)",
+    "reason": "Low GFR and elevated albuminuria."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 1.5
+      },
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 18
+      }
+    ],
+    "suggestion": "Renal Acidosis",
+    "reason": "Common in CKD or tubular disorders."
+  }
+
+
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "flank-pain",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "ultrasound",
+        "field": "stones",
+        "operator": "in",
+        "value": ["Single", "Multiple"]
+      }
+    ],
+    "suggestion": "Renal Colic due to Stones",
+    "reason": "Flank pain with ultrasound evidence of renal calculi."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "blood",
+        "operator": "==",
+        "value": "Positive"
+      },
+      {
+        "section": "symptoms",
+        "field": "flank-pain",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Hematuria with Flank Pain",
+    "reason": "Consider stone disease or infection."
+  },
+  {
+    "type": "simple",
+    "test": "phosphate",
+    "operator": "<",
+    "threshold": 2.5,
+    "suggestion": "Hypophosphatemia",
+    "reason": "Low phosphate may occur in malnutrition or after dialysis."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 5
+      },
+      {
+        "section": "symptoms",
+        "field": "nausea",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Uremia",
+    "reason": "Elevated creatinine with uremic symptoms like nausea."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": ">",
+    "threshold": 120,
+    "suggestion": "Possible Hyperfiltration",
+    "reason": "May indicate early diabetic nephropathy or pregnancy."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "breathlessness",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "hemoglobin",
+        "operator": "<",
+        "value": 8
+      }
+    ],
+    "suggestion": "Severe Anemia with Dyspnea",
+    "reason": "May require transfusion or urgent correction."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "nsaid-use",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 1.3
+      }
+    ],
+    "suggestion": "NSAID-Induced Nephropathy",
+    "reason": "NSAIDs may cause AKI or CKD progression."
+  },
+  {
+    "type": "multi",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "hydronephrosis",
+        "operator": "==",
+        "value": "Moderate"
+      },
+      {
+        "section": "symptoms",
+        "field": "decreased-urine-output",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Suspected Post-Renal AKI",
+    "reason": "Hydronephrosis with oliguria suggests obstruction."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 15
+      },
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Symptomatic ESRD",
+    "reason": "Suggests need for dialysis planning."
+  },
+  {
+    "type": "simple",
+    "test": "albumin",
+    "operator": ">",
+    "threshold": 5.5,
+    "suggestion": "Hyperalbuminemia",
+    "reason": "May suggest dehydration or hemoconcentration."
+  }
+
+
+  {
+    "type": "multi",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "hemoglobin",
+        "operator": "<",
+        "value": 10
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 30
+      }
+    ],
+    "suggestion": "Anemia of CKD",
+    "reason": "Low hemoglobin in advanced CKD is common."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "breathlessness",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "vitals",
+        "field": "volume-status",
+        "operator": "==",
+        "value": "Hypervolemic"
+      }
+    ],
+    "suggestion": "Volume Overload State",
+    "reason": "Suggests need for diuretics or dialysis."
+  },
+  {
+    "type": "multi",
+    "conditions": [
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 300
+      },
+      {
+        "section": "urine",
+        "field": "urine-protein-24h",
+        "operator": ">",
+        "value": 3.5
+      }
+    ],
+    "suggestion": "Nephrotic Range Proteinuria",
+    "reason": "Significant protein loss consistent with nephrotic syndrome."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "hydronephrosis",
+        "operator": "==",
+        "value": "Severe"
+      },
+      {
+        "section": "ultrasound",
+        "field": "stones",
+        "operator": "in",
+        "value": ["Single", "Multiple"]
+      }
+    ],
+    "suggestion": "Obstructive Uropathy due to Stones",
+    "reason": "Severe hydronephrosis with stone evidence."
+  },
+  {
+    "type": "multi",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "albumin",
+        "operator": "<",
+        "value": 2.5
+      },
+      {
+        "section": "symptoms",
+        "field": "edema",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Severe Hypoalbuminemia with Edema",
+    "reason": "Suggests nephrotic syndrome or liver dysfunction."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "echogenicity",
+        "operator": "==",
+        "value": "Markedly increased"
+      },
+      {
+        "section": "ultrasound",
+        "field": "kidney-size",
+        "operator": "==",
+        "value": "Decreased"
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 30
+      }
+    ],
+    "suggestion": "Advanced CKD Imaging Pattern",
+    "reason": "Small, echogenic kidneys with poor function."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "sodium",
+        "operator": "<",
+        "value": 130
+      },
+      {
+        "section": "symptoms",
+        "field": "fatigue",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Severe Hyponatremia with Symptoms",
+    "reason": "Low sodium with fatigue — risk of neurological symptoms."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "diabetes",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "albumin",
+        "operator": "<",
+        "value": 3
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 1000
+      }
+    ],
+    "suggestion": "Nephrotic-Range Proteinuria in Diabetes",
+    "reason": "Severe protein loss with low albumin in diabetes."
+  },
+  {
+    "type": "multi",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 18
+      },
+      {
+        "section": "blood",
+        "field": "potassium",
+        "operator": ">",
+        "value": 5.5
+      }
+    ],
+    "suggestion": "Metabolic Acidosis with Hyperkalemia",
+    "reason": "Disturbance commonly seen in CKD."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 75,
+    "suggestion": "Early CKD Alert",
+    "reason": "Monitor patient for progression."
+  }
+
+
+  {
+    "type": "simple",
+    "test": "urea",
+    "operator": ">",
+    "threshold": 50,
+    "suggestion": "Azotemia",
+    "reason": "Elevated urea suggests impaired kidney function."
+  },
+  {
+    "type": "simple",
+    "test": "albumin",
+    "operator": "<",
+    "threshold": 3.5,
+    "suggestion": "Hypoalbuminemia",
+    "reason": "Low albumin may suggest protein loss or malnutrition."
+  },
+  {
+    "type": "simple",
+    "test": "phosphate",
+    "operator": ">",
+    "threshold": 5,
+    "suggestion": "Hyperphosphatemia",
+    "reason": "Common in CKD due to phosphate retention."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 18
+      },
+      {
+        "section": "blood",
+        "field": "potassium",
+        "operator": ">",
+        "value": 5.5
+      }
+    ],
+    "suggestion": "Metabolic Acidosis with Hyperkalemia",
+    "reason": "Common acid-base disturbance in advanced CKD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 1.5
+      },
+      {
+        "section": "symptoms",
+        "field": "decreased-urine-output",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Suspected Acute Kidney Injury (AKI)",
+    "reason": "Rising creatinine with oliguria."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "vitals",
+        "field": "sbp",
+        "operator": ">",
+        "value": 160
+      },
+      {
+        "section": "vitals",
+        "field": "dbp",
+        "operator": ">",
+        "value": 100
+      }
+    ],
+    "suggestion": "Severe Hypertension",
+    "reason": "Blood pressure in hypertensive crisis range."
+  },
+  {
+    "type": "simple",
+    "test": "calcium",
+    "operator": "<",
+    "threshold": 8,
+    "suggestion": "Hypocalcemia",
+    "reason": "Low calcium level can lead to cramps or seizures."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 15
+      },
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 18
+      },
+      {
+        "section": "blood",
+        "field": "potassium",
+        "operator": ">",
+        "value": 5.5
+      }
+    ],
+    "suggestion": "ESRD with Metabolic Complications",
+    "reason": "End-stage kidney disease with electrolyte imbalance."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "nausea",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "symptoms",
+        "field": "vomiting",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "bicarbonate",
+        "operator": "<",
+        "value": 18
+      }
+    ],
+    "suggestion": "Uremic Symptoms with Acidosis",
+    "reason": "Consider dialysis initiation."
+  },
+  {
+    "type": "simple",
+    "test": "acr",
+    "operator": ">",
+    "threshold": 1000,
+    "suggestion": "Massive Proteinuria",
+    "reason": "Very high albuminuria suggests nephrotic-range loss."
+  }
+
+
   {
     "type": "simple",
     "test": "egfr",
