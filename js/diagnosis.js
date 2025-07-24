@@ -19,12 +19,9 @@ export function deleteDiagnosisRule(index) {
   diagnosisRules.splice(index, 1);
   saveDiagnosisRules();
 }
-
-// Handles simple condition logic
 export function evaluateCondition(cond, visit) {
   const sectionData = visit[cond.section];
   if (!sectionData) return false;
-
   const val = sectionData[cond.field];
   if (val === undefined) return false;
 
@@ -35,40 +32,81 @@ export function evaluateCondition(cond, visit) {
     case ">=": return parseFloat(val) >= cond.value;
     case "==": return val == cond.value;
     case "!=": return val != cond.value;
-    case "in": return cond.value.includes(val);
+    case "in": return Array.isArray(cond.value) && cond.value.includes(val);
     default: return false;
   }
 }
 
+// Handles simple condition logic
+
+
 export function evaluateRule(rule, visit) {
   if (rule.type === "simple") {
     return evaluateCondition({
-      section: "blood",
+      section: "blood", // default section for simple rules
       field: rule.test,
       operator: rule.operator,
       value: rule.threshold
-    }, visit) === true;
+    }, visit);
   }
 
   if (rule.type === "multi" || rule.type === "compound") {
-    const results = rule.conditions.map(cond => evaluateCondition(cond, visit));
-    const valid = results.filter(v => v !== null);
-    const positives = valid.filter(Boolean);
-    return valid.length > 0 && positives.length >= Math.ceil(valid.length * 0.6); // 60% match
+    return rule.conditions.every(cond => evaluateCondition(cond, visit));
   }
 
   return false;
 }
 
+export function getMissingFieldsForRule(rule, visit) {
+  const missing = [];
 
-export function generateDiagnosisText(visit) {
-  const matches = [];
-  for (const rule of diagnosisRules) {
-    if (evaluateRule(rule, visit)) {
-      matches.push(`- ${rule.suggestion} (Reason: ${rule.reason})`);
+  const conditions = rule.type === "simple"
+    ? [{ section: "blood", field: rule.test }]
+    : rule.conditions;
+
+  for (const cond of conditions) {
+    const sectionData = visit[cond.section];
+    if (!sectionData || sectionData[cond.field] === undefined || sectionData[cond.field] === "") {
+      missing.push(`${cond.section}.${cond.field}`);
     }
   }
-  return matches.length ? matches.join('\n') : "No diagnosis suggestions matched.";
+
+  return missing;
+}
+
+
+
+export function generateDiagnosisText(visit) {
+  const matched = [];
+  const missingSuggestions = [];
+
+  for (const rule of diagnosisRules) {
+    if (evaluateRule(rule, visit)) {
+      matched.push(`- ${rule.suggestion} — *${rule.reason}*`);
+    } else {
+      const missing = getMissingFieldsForRule(rule, visit);
+      if (missing.length > 0) {
+        missingSuggestions.push({
+          suggestion: rule.suggestion,
+          reason: rule.reason,
+          missing
+        });
+      }
+    }
+  }
+
+  if (matched.length > 0) {
+    return matched.join("\n");
+  }
+
+  if (missingSuggestions.length > 0) {
+    const lines = missingSuggestions.slice(0, 3).map(ms =>
+      `🧪 To evaluate *${ms.suggestion}*, consider testing: ${ms.missing.join(", ")}`
+    );
+    return "No confirmed diagnosis yet.\n" + lines.join("\n");
+  }
+
+  return "No diagnosis match and no major data gaps detected.";
 }
 
 export function getDefaultRules() {
