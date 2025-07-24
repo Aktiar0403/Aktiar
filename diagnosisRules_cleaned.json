@@ -1,0 +1,213 @@
+[
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 90,
+    "suggestion": "CKD Stage 2",
+    "reason": "Mild reduction in kidney function per KDIGO."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 60,
+    "suggestion": "CKD Stage 3",
+    "reason": "Moderate reduction in kidney function."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 30,
+    "suggestion": "CKD Stage 4",
+    "reason": "Severe kidney dysfunction."
+  },
+  {
+    "type": "simple",
+    "test": "egfr",
+    "operator": "<",
+    "threshold": 15,
+    "suggestion": "CKD Stage 5 (ESRD)",
+    "reason": "End-stage renal disease, dialysis may be required."
+  },
+  {
+    "type": "simple",
+    "test": "acr",
+    "operator": ">",
+    "threshold": 300,
+    "suggestion": "Nephrotic-range Proteinuria",
+    "reason": "Severe glomerular disease."
+  },
+  {
+    "type": "simple",
+    "test": "sodium",
+    "operator": "<",
+    "threshold": 135,
+    "suggestion": "Hyponatremia",
+    "reason": "Low sodium level, risk of seizures."
+  },
+  {
+    "type": "simple",
+    "test": "potassium",
+    "operator": ">",
+    "threshold": 5.5,
+    "suggestion": "Hyperkalemia",
+    "reason": "High potassium, may cause arrhythmia."
+  },
+  {
+    "type": "simple",
+    "test": "hemoglobin",
+    "operator": "<",
+    "threshold": 11,
+    "suggestion": "Anemia of CKD",
+    "reason": "Common in moderate to advanced CKD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "diabetes",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 45
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 300
+      }
+    ],
+    "suggestion": "Advanced Diabetic Nephropathy",
+    "reason": "Diabetes with severe proteinuria and reduced kidney function."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "medical",
+        "field": "hypertension",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 45
+      },
+      {
+        "section": "ultrasound",
+        "field": "kidneySize",
+        "operator": "==",
+        "value": "Decreased"
+      }
+    ],
+    "suggestion": "Hypertensive Nephrosclerosis",
+    "reason": "Long-standing hypertension causing CKD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "egfr",
+        "operator": "<",
+        "value": 30
+      },
+      {
+        "section": "blood",
+        "field": "hemoglobin",
+        "operator": "<",
+        "value": 10
+      }
+    ],
+    "suggestion": "CKD Stage 4 with Anemia",
+    "reason": "Severe kidney disease with low hemoglobin."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "calcium",
+        "operator": "<",
+        "value": 8.5
+      },
+      {
+        "section": "blood",
+        "field": "phosphate",
+        "operator": ">",
+        "value": 4.5
+      }
+    ],
+    "suggestion": "CKD-MBD (Mineral Bone Disorder)",
+    "reason": "Disordered mineral metabolism in CKD."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "blood",
+        "field": "creatinine",
+        "operator": ">",
+        "value": 2
+      },
+      {
+        "section": "blood",
+        "field": "potassium",
+        "operator": ">",
+        "value": 5.5
+      }
+    ],
+    "suggestion": "Possible AKI with Hyperkalemia",
+    "reason": "Rising creatinine with dangerous potassium level."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "symptoms",
+        "field": "edema",
+        "operator": "==",
+        "value": true
+      },
+      {
+        "section": "urine",
+        "field": "acr",
+        "operator": ">",
+        "value": 300
+      }
+    ],
+    "suggestion": "Nephrotic Syndrome",
+    "reason": "Edema with heavy protein loss."
+  },
+  {
+    "type": "compound",
+    "conditions": [
+      {
+        "section": "ultrasound",
+        "field": "cysts",
+        "operator": "in",
+        "value": [
+          "Multiple bilateral"
+        ]
+      },
+      {
+        "section": "medical",
+        "field": "family-ckd",
+        "operator": "==",
+        "value": true
+      }
+    ],
+    "suggestion": "Likely Polycystic Kidney Disease",
+    "reason": "Cystic changes with family history."
+  }
+]
