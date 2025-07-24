@@ -1718,4 +1718,231 @@
     "suggestion": "Likely Polycystic Kidney Disease",
     "reason": "Cystic changes with family history."
   }
+  
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "creatinine", "operator": ">", "value": 1.3 },
+      { "section": "blood", "field": "egfr", "operator": ">", "value": 120 }
+    ],
+    "flag": "Inconsistent Creatinine-eGFR Pair",
+    "message": "High creatinine with high eGFR — check unit mismatch or lab calibration."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "hemoglobin", "operator": "<", "value": 8 },
+      { "section": "symptoms", "field": "fatigue", "operator": "==", "value": false }
+    ],
+    "flag": "Unusual Asymptomatic Anemia",
+    "message": "Severe anemia without fatigue — confirm hemoglobin or assess compensatory mechanisms."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "urine", "field": "acr", "operator": ">", "value": 1000 },
+      { "section": "symptoms", "field": "edema", "operator": "==", "value": false }
+    ],
+    "flag": "Proteinuria Without Edema",
+    "message": "Nephrotic-range proteinuria without edema — confirm urine ACR and rule out errors."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "bicarbonate", "operator": "<", "value": 15 },
+      { "section": "blood", "field": "egfr", "operator": ">", "value": 60 }
+    ],
+    "flag": "Metabolic Acidosis with Preserved eGFR",
+    "message": "Low bicarbonate without CKD — investigate non-renal causes of acidosis."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "ultrasound", "field": "kidney-size", "operator": "==", "value": "Decreased" },
+      { "section": "blood", "field": "creatinine", "operator": "<", "value": 1 }
+    ],
+    "flag": "Small Kidneys with Normal Creatinine",
+    "message": "Decreased kidney size with low creatinine — consider overestimation or cachexia."
+  }
+
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "phosphate", "operator": ">", "value": 6 },
+      { "section": "blood", "field": "calcium", "operator": ">", "value": 10.5 }
+    ],
+    "flag": "Simultaneous Hypercalcemia and Hyperphosphatemia",
+    "message": "High calcium and phosphate suggest high risk for vascular calcification — assess for CKD-MBD or lab error."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "urine", "field": "urine-protein-24h", "operator": ">", "value": 3.5 },
+      { "section": "blood", "field": "albumin", "operator": ">", "value": 4 }
+    ],
+    "flag": "High Proteinuria with Normal Albumin",
+    "message": "Massive protein loss with normal albumin — verify urine report or consider non-albumin proteinuria."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "potassium", "operator": "<", "value": 2.8 },
+      { "section": "vitals", "field": "sbp", "operator": ">", "value": 160 }
+    ],
+    "flag": "Severe Hypokalemia with Hypertension",
+    "message": "Consider primary aldosteronism or diuretic overuse — recommend aldosterone-renin ratio."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "sodium", "operator": "<", "value": 125 },
+      { "section": "symptoms", "field": "nausea", "operator": "==", "value": false }
+    ],
+    "flag": "Severe Hyponatremia Without Symptoms",
+    "message": "Critically low sodium without symptoms — check for slow-onset chronic hyponatremia or lab error."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "hemoglobin", "operator": ">", "value": 17.5 },
+      { "section": "symptoms", "field": "fatigue", "operator": "==", "value": true }
+    ],
+    "flag": "Polycythemia with Fatigue",
+    "message": "Unusual combination — evaluate for hypoxia, JAK2 mutation, or secondary erythrocytosis."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "urea", "operator": ">", "value": 100 },
+      { "section": "blood", "field": "creatinine", "operator": "<", "value": 1.2 }
+    ],
+    "flag": "Isolated High Urea",
+    "message": "High urea with normal creatinine — consider high-protein intake, GI bleed, or dehydration."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "ultrasound", "field": "echogenicity", "operator": "==", "value": "Markedly increased" },
+      { "section": "blood", "field": "egfr", "operator": ">", "value": 90 }
+    ],
+    "flag": "Abnormal USG with Normal eGFR",
+    "message": "USG suggests CKD but eGFR is normal — consider early disease or need to repeat imaging/labs."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "creatinine", "operator": "<", "value": 0.5 }
+    ],
+    "flag": "Unusually Low Creatinine",
+    "message": "Possible low muscle mass, malnutrition, or lab error — avoid overestimating renal function."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "symptoms", "field": "breathlessness", "operator": "==", "value": true },
+      { "section": "blood", "field": "hemoglobin", "operator": ">", "value": 13 }
+    ],
+    "flag": "Dyspnea Despite Normal Hemoglobin",
+    "message": "Non-anemic cause of breathlessness — suggest chest X-ray or cardiac evaluation."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "urine", "field": "acr", "operator": "<", "value": 10 },
+      { "section": "blood", "field": "egfr", "operator": "<", "value": 30 }
+    ],
+    "flag": "Low ACR with Severe eGFR Decline",
+    "message": "Advanced CKD without albuminuria — consider tubulointerstitial cause or lab mismatch."
+  }
+
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "medical", "field": "diabetes", "operator": "==", "value": true },
+      { "section": "urine", "field": "acr", "operator": "<", "value": 30 },
+      { "section": "blood", "field": "egfr", "operator": "<", "value": 45 }
+    ],
+    "flag": "Non-Albuminuric Diabetic Kidney Disease",
+    "message": "Reduced eGFR without proteinuria in diabetes — consider vascular or ischemic nephropathy."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "urine", "field": "blood", "operator": "==", "value": "Positive" },
+      { "section": "symptoms", "field": "flankPain", "operator": "==", "value": false }
+    ],
+    "flag": "Asymptomatic Hematuria",
+    "message": "Urine blood detected without symptoms — rule out glomerulonephritis or urological causes."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "ultrasound", "field": "cysts", "operator": "==", "value": "Multiple bilateral" },
+      { "section": "medical", "field": "family-ckd", "operator": "!=", "value": true }
+    ],
+    "flag": "Polycystic Pattern Without Family History",
+    "message": "Bilateral renal cysts without known family history — consider de novo PKD or syndromic cysts."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "bicarbonate", "operator": ">", "value": 35 }
+    ],
+    "flag": "Alkalosis",
+    "message": "Metabolic alkalosis detected — check volume status, vomiting, or diuretic use."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "phosphate", "operator": "<", "value": 2 }
+    ],
+    "flag": "Hypophosphatemia",
+    "message": "Check for malnutrition, refeeding syndrome, or renal phosphate wasting."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "potassium", "operator": ">", "value": 6.5 }
+    ],
+    "flag": "Severe Hyperkalemia",
+    "message": "Life-threatening potassium level — recommend urgent ECG and emergency treatment."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "albumin", "operator": "<", "value": 2.5 },
+      { "section": "urine", "field": "urine-protein-24h", "operator": "<", "value": 1 }
+    ],
+    "flag": "Hypoalbuminemia Without Proteinuria",
+    "message": "Low serum albumin without protein loss — evaluate for liver disease or malnutrition."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "hemoglobin", "operator": "<", "value": 10 },
+      { "section": "blood", "field": "egfr", "operator": ">", "value": 60 }
+    ],
+    "flag": "Anemia Without CKD",
+    "message": "Anemia in non-CKD range — explore GI bleed, B12 deficiency, or bone marrow suppression."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "blood", "field": "calcium", "operator": ">", "value": 11.5 }
+    ],
+    "flag": "Marked Hypercalcemia",
+    "message": "Severe hypercalcemia — evaluate for malignancy, hyperparathyroidism, or vitamin D toxicity."
+  },
+  {
+    "type": "flag",
+    "conditions": [
+      { "section": "vitals", "field": "sbp", "operator": "<", "value": 90 },
+      { "section": "vitals", "field": "dbp", "operator": "<", "value": 60 },
+      { "section": "blood", "field": "creatinine", "operator": ">", "value": 1.5 }
+    ],
+    "flag": "Hypotension with Elevated Creatinine",
+    "message": "Possible prerenal AKI — assess volume status and consider fluid resuscitation."
+  }
+
+
 ]
